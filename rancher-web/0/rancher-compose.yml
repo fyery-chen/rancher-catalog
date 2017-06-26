@@ -1,0 +1,11 @@
+.catalog:
+  name: "Rancher Web"
+  version: "v0.0.1"
+  description: "Rancher Web Online"
+  questions:
+    - variable: "web_http_port"
+      description: "expose http port so that the net outside can access"
+      label: "Http Port"
+      type: "int"
+      required: true
+      default: "443"

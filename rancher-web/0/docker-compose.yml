@@ -1,0 +1,8 @@
+version: '2'
+services:
+  nginx:
+    privileged: true
+    image: rancher/nginx:v1.9.4-3 
+    pid: host
+    labels:
+      io.rancher.container.pull_image: always
