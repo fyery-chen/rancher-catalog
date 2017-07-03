@@ -4,5 +4,7 @@ services:
     privileged: true
     image: rancher/nginx:v1.9.4-3 
     pid: host
+    ports:
+    - 8088:80/tcp
     labels:
       io.rancher.container.pull_image: always
