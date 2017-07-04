@@ -23,3 +23,8 @@ services:
     - --prefix=/2015-07-25
     labels:
       io.rancher.container.hostname_override: container_name
+  php-server:
+    image: webdevops/php-nginx
+  mysql-server:
+    image: mysql/mysql-server
+    
