@@ -1,11 +1,26 @@
-.catalog:
-  name: "Rancher Web"
-  version: "v0.0.1"
-  description: "Rancher Web Online"
-  questions:
-    - variable: "web_http_port"
-      description: "expose http port so that the net outside can access"
-      label: "Http Port"
-      type: "int"
-      required: true
-      default: "443"
+version: '2'
+services:
+  web-server:
+    scale: 1
+    start_on_create: true
+  web-lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - protocol: http
+        service: web-server
+        source_port: 8080
+        target_port: 8080
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  mysql-server:
+    scale: 1
+    start_on_create: true
